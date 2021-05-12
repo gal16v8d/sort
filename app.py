@@ -9,7 +9,7 @@ OPTIONS = ['BubbleSort', 'HeapSort', 'RadixSort', 'BinSort', 'ShellSort', 'Quick
 TITLE = 'Sort Algorithms'
 arr = []
 
-root= Tk()
+root = Tk()
 root.title(TITLE)
 
 def print_console(arr, alg): 
