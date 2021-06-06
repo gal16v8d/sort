@@ -1,6 +1,7 @@
 # sort
 
 # Get started
+
 Install python3-venv:
 sudo apt install python3-venv
 Install python3 tkinter for UI:
@@ -12,8 +13,10 @@ source venv/bin/activate
 Install python libs as you need it
 
 # set up
+
 For generate requirements.txt file please execute:
 pip3 freeze > requirements.txt
 
 # launch
-python3 app.py
+
+python3 sort/app.py
