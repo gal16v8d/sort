@@ -6,16 +6,24 @@ Install python3-venv:
 sudo apt install python3-venv
 Install python3 tkinter for UI:
 sudo apt install python3-tk
+Install pipenv:
+pip3 install pipenv
 Then create the folder for allocate the virtual environment:
-python3 -m venv venv
-The activate the virtual env:
-source venv/bin/activate
-Install python libs as you need it
+mkdir .venv
+Launch pipenv:
+pipenv install --skip-lock
+Then activate the virtual env:
+pipenv shell
+Run command inside virtualenv:
+pipenv run
+Exit virtual env:
+exit o deactivate
+Once env is activated you can
 
 # set up
 
-For generate requirements.txt file please execute:
-pip3 freeze > requirements.txt
+Configure all your dependencies in Pipfile.
+See: https://pypi.org/
 
 # launch
 

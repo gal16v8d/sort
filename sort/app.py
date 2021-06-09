@@ -3,7 +3,7 @@ import re
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-import sortAlg
+import sort_alg
 
 OPTIONS = ['BubbleSort', 'HeapSort', 'RadixSort',
            'BinSort', 'ShellSort', 'QuickSort']
@@ -46,42 +46,42 @@ def show_result(sorted_arr, alg):
 
 def bubble_sort():
     print('BubleSort seleccionado')
-    b_sort = sortAlg.BubbleSort()
+    b_sort = sort_alg.BubbleSort()
     sorted_arr = b_sort.bubble_sort_console(arr)
     show_result(sorted_arr, 'BubleSort')
 
 
 def heap_sort():
     print('HeapSort seleccionado')
-    h_sort = sortAlg.HeapSort()
+    h_sort = sort_alg.HeapSort()
     sorted_arr = h_sort.heap_sort_console(arr)
     show_result(sorted_arr, 'HeapSort')
 
 
 def radix_sort():
     print('RadixSort seleccionado')
-    r_sort = sortAlg.RadixSort()
+    r_sort = sort_alg.RadixSort()
     sorted_arr = r_sort.radix_sort_console(arr)
     show_result(sorted_arr, 'RadixSort')
 
 
 def bin_sort():
     print('BinSort seleccionado')
-    bi_sort = sortAlg.BinSort()
+    bi_sort = sort_alg.BinSort()
     sorted_arr = bi_sort.insertion_sort_console(arr)
     show_result(sorted_arr, 'BinSort')
 
 
 def shell_sort():
     print('ShellSort seleccionado')
-    s_sort = sortAlg.ShellSort()
+    s_sort = sort_alg.ShellSort()
     sorted_arr = s_sort.shell_sort_console(arr)
     show_result(sorted_arr, 'ShellSort')
 
 
 def quick_sort():
     print('QuickSort seleccionado')
-    q_sort = sortAlg.QuickSort()
+    q_sort = sort_alg.QuickSort()
     sorted_arr = q_sort.quick_sort_console(arr, 0, len(arr) - 1)
     show_result(sorted_arr, 'QuickSort')
 
