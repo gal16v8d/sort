@@ -18,7 +18,6 @@ Run command inside virtualenv:
 pipenv run
 Exit virtual env:
 exit o deactivate
-Once env is activated you can
 
 # set up
 
