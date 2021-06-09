@@ -2,8 +2,6 @@
 
 # Get started
 
-Install python3-venv:
-sudo apt install python3-venv
 Install python3 tkinter for UI:
 sudo apt install python3-tk
 Install pipenv:
@@ -17,7 +15,7 @@ pipenv shell
 Run command inside virtualenv:
 pipenv run
 Exit virtual env:
-exit o deactivate
+exit or deactivate
 
 # set up
 
