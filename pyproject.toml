@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "sort"
+version = "0.1.0"
+description = ""
+authors = ["gal16v8d"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+tk = "^0.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.0.3"
+pep8 = "^1.7.1"
+autopep8 = "^2.0.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
