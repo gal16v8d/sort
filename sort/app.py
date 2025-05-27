@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from builtins import map
 import re
-from typing import List
 
 from tkinter import *
 from tkinter import messagebox, ttk
@@ -21,13 +21,13 @@ root = Tk()
 root.title(TITLE)
 
 
-def print_console(arr_data: List) -> None:
+def print_console(arr_data: list) -> None:
     """Print the contents of the array to the console."""
     for arr_value in arr_data:
         print(arr_value)
 
 
-def show_in_text_field(field: Text, arr_data: List) -> None:
+def show_in_text_field(field: Text, arr_data: list) -> None:
     """Display the contents of the array in the specified text field."""
     field.delete(1.0, END)
     field.insert(1.0, " ".join(map(str, arr_data)))
@@ -85,7 +85,7 @@ sort_options = {
 }
 
 
-def regex_for_sort() -> List[str]:
+def regex_for_sort() -> list[str]:
     """Return the regex for the selected sort type."""
     val = sort_combo.get()
     regex_data = []

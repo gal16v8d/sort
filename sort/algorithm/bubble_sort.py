@@ -1,6 +1,6 @@
 """Bubble Sort Algorithm Implementation"""
 
-from typing import List
+from builtins import map
 from algorithm.sort_types import Number
 
 
@@ -15,7 +15,7 @@ class BubbleSort:
     """
 
     @staticmethod
-    def bubble_sort_console(arr: List[Number]) -> List[float]:
+    def bubble_sort_console(arr: list[Number]) -> list[float]:
         """
         Sorts an array using the bubble sort algorithm.
         :param arr: List of numbers (can be int or float) to be sorted.

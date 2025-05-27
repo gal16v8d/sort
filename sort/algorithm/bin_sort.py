@@ -1,6 +1,6 @@
 """Binary Insertion Sort Algorithm"""
 
-from typing import List
+from builtins import map
 from algorithm.sort_types import Number
 
 
@@ -12,7 +12,7 @@ class BinSort:
     """
 
     def __binary_search(
-        self, arr: List[Number], val: float, start: int, end: int
+        self, arr: list[Number], val: float, start: int, end: int
     ) -> int:
         """
         This function performs a binary search to find the
@@ -41,7 +41,7 @@ class BinSort:
         else:
             return mid
 
-    def insertion_sort_console(self, arr: List[Number]) -> List[float]:
+    def insertion_sort_console(self, arr: list[Number]) -> list[float]:
         """
         This method sorts an array using the binary insertion sort algorithm.
         It converts the input array to a list of floats, then iteratively

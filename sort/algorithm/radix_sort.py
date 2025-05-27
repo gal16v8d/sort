@@ -1,6 +1,6 @@
 """Radix Sort Algorithm Implementation"""
 
-from typing import List
+from builtins import map
 
 
 class RadixSort:
@@ -12,7 +12,7 @@ class RadixSort:
     Space Complexity: O(n) for the output array.
     """
 
-    def __counting_sort(self, arr: List[int], exp1: int) -> None:
+    def __counting_sort(self, arr: list[int], exp1: int) -> None:
         """
         A function to do counting sort of arr[] according to
         the digit represented by exp1 (10^i where i is the current digit number).
@@ -41,7 +41,7 @@ class RadixSort:
         for i in range(0, len(arr)):
             arr[i] = output[i]
 
-    def radix_sort_console(self, arr: List[int]) -> List[int]:
+    def radix_sort_console(self, arr: list[int]) -> list[int]:
         """
         Sorts an array using the radix sort algorithm.
         :param arr: List of numbers (can be int or float) to be sorted.

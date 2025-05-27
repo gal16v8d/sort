@@ -1,6 +1,6 @@
 """Heap Sort Algorithm Implementation"""
 
-from typing import List
+from builtins import map
 from algorithm.sort_types import Number
 
 
@@ -13,7 +13,7 @@ class HeapSort:
     Space Complexity: O(1) as it sorts the list in place.
     """
 
-    def __heapify(self, arr: List[Number], n: int, i: int) -> None:
+    def __heapify(self, arr: list[Number], n: int, i: int) -> None:
         """
         Maintains the heap property for a subtree rooted at index i.
         :param arr: The array representing the heap.
@@ -37,7 +37,7 @@ class HeapSort:
             # Heapify the root.
             self.__heapify(arr, n, largest)
 
-    def heap_sort_console(self, arr: List[Number]) -> List[float]:
+    def heap_sort_console(self, arr: list[Number]) -> list[float]:
         """
         Sorts an array using the heap sort algorithm.
         :param arr: List of numbers (can be int or float) to be sorted.

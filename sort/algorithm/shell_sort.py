@@ -1,6 +1,6 @@
 """Shell Sort Algorithm Implementation"""
 
-from typing import List
+from builtins import map
 from algorithm.sort_types import Number
 
 
@@ -15,7 +15,7 @@ class ShellSort:
     """
 
     @staticmethod
-    def shell_sort_console(arr: List[Number]) -> List[float]:
+    def shell_sort_console(arr: list[Number]) -> list[float]:
         """Sorts an array using the Shell Sort algorithm.
         Args:
             arr (List): The array to be sorted.

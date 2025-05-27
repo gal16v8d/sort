@@ -1,6 +1,6 @@
 """QuickSort Algorithm Implementation"""
 
-from typing import List
+from builtins import map
 from algorithm.sort_types import Number
 
 
@@ -11,7 +11,7 @@ class QuickSort:
     The sub-arrays are then sorted recursively.
     """
 
-    def __partition(self, arr: List[Number], low: Number, high: Number) -> int:
+    def __partition(self, arr: list[Number], low: Number, high: Number) -> int:
         """This function takes last element as pivot, places
         the pivot element at its correct position in sorted
         array, and places all smaller (smaller than pivot)
@@ -39,8 +39,8 @@ class QuickSort:
         return i + 1
 
     def quick_sort_console(
-        self, arr: List[Number], low: Number, high: Number
-    ) -> List[float]:
+        self, arr: list[Number], low: Number, high: Number
+    ) -> list[float]:
         """The function to sort an array using quick sort algorithm.
         Args:
             arr (List): The array to be sorted.
