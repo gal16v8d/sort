@@ -1,127 +1,125 @@
 # -*- coding: utf-8 -*-
 import re
-from tkinter import *
-from tkinter import messagebox
-from tkinter import ttk
-import sort_alg
+from typing import List
 
-OPTIONS = ['BubbleSort', 'HeapSort', 'RadixSort',
-           'BinSort', 'ShellSort', 'QuickSort']
-TITLE = 'Sort Algorithms'
+from tkinter import *
+from tkinter import messagebox, ttk
+
+from algorithm.bin_sort import BinSort
+from algorithm.bubble_sort import BubbleSort
+from algorithm.heap_sort import HeapSort
+from algorithm.quick_sort import QuickSort
+from algorithm.radix_sort import RadixSort
+from algorithm.shell_sort import ShellSort
+from const.const import OPTIONS, TITLE
+from window_menu import WindowMenu
+
+
 arr = []
 
 root = Tk()
 root.title(TITLE)
 
 
-def print_console(arr, alg):
-    n = len(arr)
-    print('Array sorted using: ' + alg)
-    for i in range(n):
-        print(arr[i]),
+def print_console(arr_data: List) -> None:
+    """Print the contents of the array to the console."""
+    for arr_value in arr_data:
+        print(arr_value)
 
 
-def sort_data():
-    val = sort_combo.get()
-    if val == OPTIONS[0]:
-        bubble_sort()
-    elif val == OPTIONS[1]:
-        heap_sort()
-    elif val == OPTIONS[2]:
-        radix_sort()
-    elif val == OPTIONS[3]:
-        bin_sort()
-    elif val == OPTIONS[4]:
-        shell_sort()
-    elif val == OPTIONS[5]:
-        quick_sort()
-    else:
-        messagebox.showerror(TITLE, 'Sort type not supported')
+def show_in_text_field(field: Text, arr_data: List) -> None:
+    """Display the contents of the array in the specified text field."""
+    field.delete(1.0, END)
+    field.insert(1.0, " ".join(map(str, arr_data)))
 
 
-def show_result(sorted_arr, alg):
-    print_console(sorted_arr, alg)
+def show_result(sorted_arr) -> None:
+    """Display the sorted array in the console and text field."""
+    print_console(sorted_arr)
     show_in_text_field(result_text, sorted_arr)
 
 
-def bubble_sort():
-    print('BubleSort seleccionado')
-    b_sort = sort_alg.BubbleSort()
-    sorted_arr = b_sort.bubble_sort_console(arr)
-    show_result(sorted_arr, 'BubleSort')
+def bubble_sort() -> None:
+    """Sort the array using Bubble Sort and display the result."""
+    sorted_arr = BubbleSort.bubble_sort_console(arr)
+    show_result(sorted_arr)
 
 
-def heap_sort():
-    print('HeapSort seleccionado')
-    h_sort = sort_alg.HeapSort()
-    sorted_arr = h_sort.heap_sort_console(arr)
-    show_result(sorted_arr, 'HeapSort')
+def heap_sort() -> None:
+    """Sort the array using Heap Sort and display the result."""
+    sorted_arr = HeapSort().heap_sort_console(arr)
+    show_result(sorted_arr)
 
 
-def radix_sort():
-    print('RadixSort seleccionado')
-    r_sort = sort_alg.RadixSort()
-    sorted_arr = r_sort.radix_sort_console(arr)
-    show_result(sorted_arr, 'RadixSort')
+def radix_sort() -> None:
+    """Sort the array using Radix Sort and display the result."""
+    sorted_arr = RadixSort().radix_sort_console(arr)
+    show_result(sorted_arr)
 
 
-def bin_sort():
-    print('BinSort seleccionado')
-    bi_sort = sort_alg.BinSort()
-    sorted_arr = bi_sort.insertion_sort_console(arr)
-    show_result(sorted_arr, 'BinSort')
+def bin_sort() -> None:
+    """Sort the array using Binary Insertion Sort and display the result."""
+    sorted_arr = BinSort().insertion_sort_console(arr)
+    show_result(sorted_arr)
 
 
-def shell_sort():
-    print('ShellSort seleccionado')
-    s_sort = sort_alg.ShellSort()
-    sorted_arr = s_sort.shell_sort_console(arr)
-    show_result(sorted_arr, 'ShellSort')
+def shell_sort() -> None:
+    """Sort the array using Shell Sort and display the result."""
+    sorted_arr = ShellSort.shell_sort_console(arr)
+    show_result(sorted_arr)
 
 
-def quick_sort():
-    print('QuickSort seleccionado')
-    q_sort = sort_alg.QuickSort()
-    sorted_arr = q_sort.quick_sort_console(arr, 0, len(arr) - 1)
-    show_result(sorted_arr, 'QuickSort')
+def quick_sort() -> None:
+    """Sort the array using Quick Sort and display the result."""
+    sorted_arr = QuickSort().quick_sort_console(arr, 0, len(arr) - 1)
+    show_result(sorted_arr)
 
 
-def regex_for_sort():
+sort_options = {
+    "BinSort": bin_sort,
+    "BubbleSort": bubble_sort,
+    "HeapSort": heap_sort,
+    "RadixSort": radix_sort,
+    "ShellSort": shell_sort,
+    "QuickSort": quick_sort,
+}
+
+
+def regex_for_sort() -> List[str]:
+    """Return the regex for the selected sort type."""
     val = sort_combo.get()
     regex_data = []
     if val == OPTIONS[2]:
-        regex_data.append('^[0-9]+$')
-        regex_data.append('Solo se permiten numeros enteros positivos')
+        regex_data.append("^[0-9]+$")
+        regex_data.append("Just positive integers are allowed")
         return regex_data
     elif val in OPTIONS:
-        regex_data.append('^[0-9]*[.]{0,1}[0-9]*$')
-        regex_data.append(
-            'Solo se permiten numeros/decimales con punto positivos')
+        regex_data.append("^[0-9]*[.]{0,1}[0-9]*$")
+        regex_data.append("Just positive integers or floats are allowed")
         return regex_data
     else:
-        messagebox.showerror(TITLE, 'Opcion de ordenamiento no soportada')
+        messagebox.showerror(TITLE, "Unsupported sort type")
+        return []
 
 
-def clear_fields():
+def clear_fields() -> None:
+    """Clear all text fields and the array."""
     number_text.delete(1.0, END)
     result_text.delete(1.0, END)
     value_text.delete(1.0, END)
     arr.clear()
 
 
-def show_in_text_field(field, arr):
-    field.delete(1.0, END)
-    field.insert(1.0, ' '.join(map(str, arr)))
-
-
-def clear_last_value():
+def clear_last_value() -> None:
+    """Remove the last value from the array and update the text field."""
     if arr:
         arr.pop()
         show_in_text_field(value_text, arr)
 
 
-def add_value():
-    val = number_text.get('1.0', END).strip()
+def add_value() -> None:
+    """Add a new value to the array if it matches the regex for the selected sort type."""
+    val = number_text.get("1.0", END).strip()
     regex_data = regex_for_sort()
     if regex_data:
         if re.match(regex_data[0], val):
@@ -131,26 +129,43 @@ def add_value():
             messagebox.showerror(TITLE, regex_data[1])
 
 
-def exit_app():
-    value = messagebox.askokcancel("Exit", "Do you want to exit?")
-    if value:
-        root.destroy()
+def sort_data() -> None:
+    """Sort the array based on the selected sort type."""
+
+    val = sort_combo.get()
+    if val in sort_options:
+        print(f"Sorting using: {val}")
+        sort_options[val]()
+    else:
+        messagebox.showerror(TITLE, "Sort type not supported")
 
 
-def show_licence():
-    messagebox.showinfo("Licence", "GNU - Free software")
+action_buttons = [
+    {"text": "Add", "command": add_value},
+    {"text": "Clear last", "command": clear_last_value},
+    {"text": "Clear all", "command": clear_fields},
+    {"text": "Sort", "command": sort_data},
+]
+
+app_labels = [
+    {"text": "Sort type: "},
+    {"text": "New number: "},
+    {"text": "Current numbers: "},
+]
 
 
-# ----------------comienzo barra Menu------------------
+# ----------------Menu bar init ------------------
+
+window_menu = WindowMenu(root)
 
 menu_bar = Menu(root)
 root.config(menu=menu_bar, width=300, height=300)
 
 exit_menu = Menu(menu_bar, tearoff=0)
-exit_menu.add_command(label="Exit", command=exit_app)
+exit_menu.add_command(label="Exit", command=window_menu.exit_app)
 
 help_menu = Menu(menu_bar, tearoff=0)
-help_menu.add_command(label="Licence", command=show_licence)
+help_menu.add_command(label="Licence", command=WindowMenu.show_licence)
 
 menu_bar.add_cascade(label="File", menu=exit_menu)
 menu_bar.add_cascade(label="Help", menu=help_menu)
@@ -158,16 +173,11 @@ menu_bar.add_cascade(label="Help", menu=help_menu)
 frame1 = Frame(root)
 frame1.pack()
 
-sort_label = Label(frame1, text="Sort type: ")
-sort_label.grid(row=0, column=0, sticky="e", padx=10, pady=10)
+for label in app_labels:
+    lbl = Label(frame1, text=label["text"])
+    lbl.grid(row=app_labels.index(label), column=0, sticky="e", padx=10, pady=10)
 
-number_label = Label(frame1, text="New number: ")
-number_label.grid(row=1, column=0, sticky="e", padx=10, pady=10)
-
-value_label = Label(frame1, text="Current numbers: ")
-value_label.grid(row=2, column=0, sticky="e", padx=10, pady=10)
-
-sort_combo = ttk.Combobox(frame1, width=16, state='readonly', values=OPTIONS)
+sort_combo = ttk.Combobox(frame1, width=16, state="readonly", values=OPTIONS)
 sort_combo.grid(row=0, column=1, padx=10, pady=10)
 sort_combo.current(0)
 
@@ -183,18 +193,11 @@ value_text.config(yscrollcommand=scroll_vert.set)
 frame2 = Frame(root)
 frame2.pack()
 
-add_button = Button(frame2, text="Add", width="10",
-                    height="1", command=add_value)
-add_button.grid(row=0, column=0, padx=10, pady=10)
-clear_last_button = Button(frame2, text="Clear last",
-                           width="10", height="1", command=clear_last_value)
-clear_last_button.grid(row=0, column=1, padx=10, pady=10)
-clear_all_button = Button(frame2, text="Clear all",
-                          width="10", height="1", command=clear_fields)
-clear_all_button.grid(row=0, column=2, padx=10, pady=10)
-sort_button = Button(frame2, text="Sort", width="10",
-                     height="1", command=sort_data)
-sort_button.grid(row=0, column=3, padx=10, pady=10)
+for action in action_buttons:
+    button = Button(
+        frame2, text=action["text"], width="10", height="1", command=action["command"]
+    )
+    button.grid(row=0, column=action_buttons.index(action), padx=10, pady=10)
 
 frame3 = Frame()
 frame3.pack()

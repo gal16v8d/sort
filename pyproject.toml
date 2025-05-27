@@ -11,8 +11,7 @@ tk = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.0.3"
-pep8 = "^1.7.1"
-autopep8 = "^2.0.4"
+black = "^25.1.0"
 
 [build-system]
 requires = ["poetry-core"]
