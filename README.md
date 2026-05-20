@@ -1,7 +1,9 @@
 # sort
 
 Base desktop UI applying sort algorithms.
-Once started
+Once started it renders a desktop window with the sort algorithms
+and input elements so you can play with the entries and proper
+algorithm to sort the data.
 
 ---
 
